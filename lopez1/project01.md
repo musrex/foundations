@@ -1,5 +1,11 @@
 # Assignment 1 Write Up
-This program takes in an input from the user, uses that input as the radius, and then calculates the circumference, area, and volume of a circle or sphere with that radius.
+This program takes in an input from the user, uses that input as the radius,  
+and then calculates the circumference, area, and volume of a circle or sphere  
+with that radius. For this program, I imported PI from the math module so as 
+to have the most accurate PI that I could, and then used that for my calculations.  
+I also used a while loop to keep the program running, and TRY and EXCEPT blocks  
+for error handling. This way if a user enters something other than a number  
+they'll be prompted to try again.   
 
 # Assignment 1 Algorithm  
 1. Import appropriate modules (pi from math) to get accurate value for PI
