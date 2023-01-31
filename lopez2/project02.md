@@ -4,9 +4,5 @@ This program takes in two inputs from a user, and runs them through a function t
 # Assignment 2 Algorithm
 1. Initiate a loop
 2. Input two numbers, a & b
-3. Divide a by b, if even return True
-4. If step 3 returns True, end loop
-5. Divide b by a, if even return True
-6. If step 5 returns True, end loop
-7. If step 2 or 3 don't return True, return False
-8. If False, restart loop
+3. Divide a by b, and b by a.
+4. If either operation divides evenly, return True and end loop. Otherwise, restart loop.
