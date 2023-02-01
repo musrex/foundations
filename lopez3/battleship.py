@@ -20,8 +20,6 @@ def drawBoard(myBoard):
         print("|" + str(i) , end="|")
         for j in range(grid_size):
             print("" + myBoard[i][j] , end = "|")
-            #for x in grid:
-                #print("-", end="")
         print()
     print("+-+-+-+-+-+-+-+-+-+-+-+")
         
