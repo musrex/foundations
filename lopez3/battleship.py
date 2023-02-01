@@ -12,14 +12,18 @@ num_of_ships = 5
 
 # display the grid (2d array)
 def drawBoard(myBoard):
+    i = j = 0
+    print("+-+-+-+-+-+-+-+-+-+-+-+")
+    print("|*","0","1","2","3","4","5","6","7","8","9|", sep="|")
     for i in range(grid_size):
-        print("|" + str(i) , end="")
+        print("+-+-+-+-+-+-+-+-+-+-+-+")
+        print("|" + str(i) , end="|")
         for j in range(grid_size):
-            print("|" + myBoard[i][j] , end = "")
+            print("" + myBoard[i][j] , end = "|")
             #for x in grid:
                 #print("-", end="")
-        print("|", end="")
-
+        print()
+    print("+-+-+-+-+-+-+-+-+-+-+-+")
         
 
 
