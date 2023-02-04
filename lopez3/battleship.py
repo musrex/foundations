@@ -13,10 +13,10 @@ def drawBoard(myBoard):
     i = j = 0
     # this print statement, repeated throughout this function, creates our horizontal borders
     print('''
- ____ _____ _____ _____ __    _____ _____ _____ _____ _____ 
-| _  |  _  |_   _|_   _|  |  |   __|  |  |     |  _  |   __|
-| _ -|     | | |   | | |  |__|__   |     |-   -|   __|__   |
-|____|__|__| |_|   |_| |_____|_____|__|__|_____|__|  |_____|                                                          
+ __  _ ____ ____    ___ ___ _ _ ____ ___ ___ 
+| .)/ \_  _|_  _|| |  _|  _| | |_  _|   |  _|
+| .\ . |||   || ||_|  _|_  |   |_||_| ._|_  |
+|__/_|_|||   || |__|___|___|_|_|____|_| |___|                                                          
  ''')
     print("+---+---+---+---+---+---+---+---+---+---+---+")
     # this print statement gives us the top row, horizontal coordinates
@@ -68,7 +68,7 @@ def hitOrMiss(myBoard, row, col):
         return True
     else:
         grid[row][col] == " O "
-        return False
+        return False        
 
 
 def isGameOver(myBoard):
@@ -91,7 +91,14 @@ def main(myBoard):
         print("Captain, please enter your coordinates: ")
         row = input("X Coordinates: ")
         col = input("Y Coordinates: ")
-        hitOrMiss(myBoard, row, col)
+        if hitOrMiss(myBoard, row, col) == True:
+            print('''
+             Captain, hit confirmed!
+             ''')
+        else:
+            print('''
+             Captain, hit confirmed!
+             ''')
 
 
 # don't forget to call the main function
