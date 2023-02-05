@@ -12,12 +12,7 @@ num_of_ships = 5
 def drawBoard(myBoard):
     i = j = 0
     # this print statement, repeated throughout this function, creates our horizontal borders
-    print('''
- __  _ ____ ____    ___ ___ _ _ ____ ___ ___ 
-| .)/ \_  _|_  _|| |  _|  _| | |_  _|   |  _|
-| .\ . |||   || ||_|  _|_  |   |_||_| ._|_  |
-|__/_|_|||   || |__|___|___|_|_|____|_| |___|                                                          
- ''')
+
     print("+---+---+---+---+---+---+---+---+---+---+---+")
     # this print statement gives us the top row, horizontal coordinates
     print("| * "," 0 "," 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "," 9 |", sep="|")
@@ -61,25 +56,36 @@ def setupBoard(grid):
 
 def hitOrMiss(myBoard, row, col):
     # implement the hit or miss functionality here    
+    global num_of_ships
     row = int(row)
     col = int(col)
     if grid[row][col] == " S ":
         grid[row][col] = " X "
+        num_of_ships =- 1
         return True
     else:
-        grid[row][col] == " O "
         return False        
 
 
 def isGameOver(myBoard):
+    global num_of_ships
     # check if there are ships remaining on the grid.
     # if there are ships remaining, return false else return true
-    return False
+    if num_of_ships == 0:
+        return True
+    else:
+        return False
+    
 
 
 # the main function!
 def main(myBoard):
-    
+    print('''
+ __  _ ____ ____    ___ ___ _ _ ____ ___ ___ 
+| .)/ \_  _|_  _|| |  _|  _| | |_  _|   |  _|
+| .\ . |||   || ||_|  _|_  |   |_||_| ._|_  |
+|__/_|_|||   || |__|___|___|_|_|____|_| |___|                                                          
+ ''')
     # first set up the array
     setupBoard(myBoard)
     # now display the array
@@ -93,13 +99,16 @@ def main(myBoard):
         col = input("Y Coordinates: ")
         if hitOrMiss(myBoard, row, col) == True:
             print('''
-             Captain, hit confirmed!
+        Captain, hit confirmed!
              ''')
         else:
             print('''
-             Captain, hit confirmed!
+        Captain, we missed our target!
              ''')
-
+        if isGameOver(myBoard) == True:
+            print('''
+        Game Over! We have neutralized the enemy forces, Captain!
+             ''')
 
 # don't forget to call the main function
 # lastly do NOT forget to pass the array we declared
