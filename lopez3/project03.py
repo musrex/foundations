@@ -7,12 +7,12 @@ grid = [ ['']*grid_size for i in range(grid_size) ]
 # we use this list to verify that ships aren't being placed in the same location
 ships = []
 num_of_ships = 5
+sunk = 0
 
 # display the grid (2d array)
 def drawBoard(myBoard):
     i = j = 0
     # this print statement, repeated throughout this function, creates our horizontal borders
-
     print("+---+---+---+---+---+---+---+---+---+---+---+")
     # this print statement gives us the top row, horizontal coordinates
     print("| * "," 0 "," 1 "," 2 "," 3 "," 4 "," 5 "," 6 "," 7 "," 8 "," 9 |", sep="|")
@@ -25,11 +25,9 @@ def drawBoard(myBoard):
         print()
     print("+---+---+---+---+---+---+---+---+---+---+---+")
     return(myBoard)
-        
-
 
 # initilize the 2 d array (the grid)
-def setupBoard(grid):
+def setupBoard():
     global ships
     i = j = 0
     while i < grid_size:
@@ -39,9 +37,7 @@ def setupBoard(grid):
             j += 1
         j = 0
         i += 1
-
     x = 0
-
     while x < num_of_ships: 
         randomRow = random.randint(0, grid_size - 1)
         randomCol = random.randint(0, grid_size - 1)    
@@ -50,32 +46,35 @@ def setupBoard(grid):
         if grid[randomRow][randomCol] in ships:
             grid[randomRow][randomCol] = " S "
             x += 1
-            
-    return(grid)
-
 
 def hitOrMiss(myBoard, row, col):
+    global sunk
     # implement the hit or miss functionality here    
-    global num_of_ships
+    #try:
     row = int(row)
     col = int(col)
     if grid[row][col] == " S ":
         grid[row][col] = " X "
-        num_of_ships =- 1
+        sunk += 1
         return True
     else:
-        return False        
-
+        grid[row][col] = " O "       
+        return False
+#    except:
+#        print(f'''
+#Sir, we can't target that location! 
+#Please give me a number in the range of 0 - {grid_size - 1}.
+#''')
 
 def isGameOver(myBoard):
     global num_of_ships
     # check if there are ships remaining on the grid.
     # if there are ships remaining, return false else return true
-    if num_of_ships == 0:
+    if sunk - num_of_ships == 0:
         return True
     else:
         return False
-    
+
 
 
 # the main function!
@@ -85,9 +84,9 @@ def main(myBoard):
 | .)/ \_  _|_  _|| |  _|  _| | |_  _|   |  _|
 | .\ . |||   || ||_|  _|_  |   |_||_| ._|_  |
 |__/_|_|||   || |__|___|___|_|_|____|_| |___|                                                          
- ''')
+     ''')
     # first set up the array
-    setupBoard(myBoard)
+    setupBoard()
     # now display the array
     run = True
 
@@ -95,23 +94,36 @@ def main(myBoard):
         drawBoard(myBoard)
         print()
         print("Captain, please enter your coordinates: ")
-        row = input("X Coordinates: ")
-        col = input("Y Coordinates: ")
+
+        invalidCol = True
+        while invalidCol:
+            col = int(input("Enter a column (X): "))
+            if  0 > col or col >= 10:
+                print("Invalid column")
+            elif 0 <= col or col < 10:
+                invalidCol = False
+
+        invalidRow = True
+        while invalidRow:
+            row = int(input("Enter a row (Y): "))
+            if  0 > row or row >= 10:
+                print("Invalid row")
+            elif 0 <= row or row < 10:
+                invalidRow = False
+
+        print("+---+---+---+---+---+---+---+---+---+---+---+")
+
         if hitOrMiss(myBoard, row, col) == True:
-            print('''
-        Captain, hit confirmed!
-             ''')
+            print("HIT!")
         else:
-            print('''
-        Captain, we missed our target!
-             ''')
+            print("MISS!")
         if isGameOver(myBoard) == True:
-            print('''
-        Game Over! We have neutralized the enemy forces, Captain!
-             ''')
+            print("GAME OVER!")
+            run = False
 
 # don't forget to call the main function
 # lastly do NOT forget to pass the array we declared
-main(grid)
+if __name__ == "__main__":
+    main(grid)
 
 
