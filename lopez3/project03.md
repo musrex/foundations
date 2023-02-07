@@ -8,8 +8,8 @@
 
 
 # Assignment 3 Algorithm
-1.
-2.
+1. First we create a 10 x 10 grid
+2. Next, we pass that
 3.
 4.
 5.
