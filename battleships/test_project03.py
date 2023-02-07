@@ -10,10 +10,9 @@ board1 = [ [" S "]*grid_size for i in range(grid_size) ]
 board2 = [ [" . "]*grid_size for i in range(grid_size) ]
 # we use this list to verify that ships aren't being placed in the same location
 
-class TestProject03(unittest.TestCase): 
-    if __name__ == "__main__":
-        unittest.main()
-    
+if __name__ == "__main__":
+    unittest.main()
+    class TestProject03(unittest.TestCase):
     
         
         def test_isGameOverTrue(self):

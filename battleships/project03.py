@@ -84,7 +84,8 @@ if __name__ == "__main__":
  __  _ ____ ____    ___ ___ _ _ ____ ___ ___ 
 | .)/ \_  _|_  _|| |  _|  _| | |_  _|   |  _|
 | .\ . |||   || ||_|  _|_  |   |_||_| ._|_  |
-|__/_|_|||   || |__|___|___|_|_|____|_| |___| ''')
+|__/_|_|||   || |__|___|___|_|_|____|_| |___|                                                          
+     ''')
         # first set up the array
         setupBoard()
         # now display the array
@@ -94,28 +95,23 @@ if __name__ == "__main__":
             drawBoard(myBoard)
             print()
             print("Captain, please enter your coordinates: ")
-
+            print(len(ships))
+            print(len(water))
             invalidCol = True
             while invalidCol:
-                try:
-                    col = int(input("Enter a column (X): "))
-                    if  0 > col or col >= 10:
-                        print("Invalid column")
-                    elif 0 <= col or col < 10:
-                        invalidCol = False
-                except:
+                col = int(input("Enter a column (X): "))
+                if  0 > col or col >= 10:
                     print("Invalid column")
-                    
+                elif 0 <= col or col < 10:
+                    invalidCol = False
+
             invalidRow = True
             while invalidRow:
-                try:
-                    row = int(input("Enter a row (Y): "))
-                    if  0 > row or row >= 10:
-                        print("Invalid row")
-                    elif 0 <= row or row < 10:
-                        invalidRow = False
-                except:
-                    print("Invalid column")
+                row = int(input("Enter a row (Y): "))
+                if  0 > row or row >= 10:
+                    print("Invalid row")
+                elif 0 <= row or row < 10:
+                    invalidRow = False
 
             print("+---+---+---+---+---+---+---+---+---+---+---+")
     
