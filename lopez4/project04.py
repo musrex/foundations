@@ -51,7 +51,7 @@ class Parallelepiped(Rectangle):
         This method can be called on objects of the Parallelepiped class to 
         return the volume of the object.
         ''' 
-        volume = self.length * self.area()
+        volume = self.length * self.width * self.height
         return volume
 
     def display(self):
@@ -63,12 +63,10 @@ class Parallelepiped(Rectangle):
 Length = {self.length}
 Width = {self.width}
 Height = {self.height}
-Area = {self.area()}
-Perimeter = {self.perimeter()}
 Volume = {self.volume()}
 ''')
 
 r1 = Rectangle(4, 5)
-r2 = Parallelepiped(2,4,4)
+r2 = Parallelepiped(4,5,6)
 r1.display()
 r2.display()
