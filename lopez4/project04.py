@@ -1,4 +1,7 @@
 class Rectangle:
+    '''
+    Words go here
+    '''
     #  we use the __init__ method initiate the class as soon as it's called.
     # for instance, as soon r1 = Rectangle(2,4) is declared, that object with those
     # attributes is created.
