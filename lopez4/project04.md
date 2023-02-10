@@ -1,6 +1,9 @@
-n order to successfully complete Module 04, please do the following:
+# Assignment 4 Write Up
+This program creates the rectangle class, providing us with a way to create rectangular objects and the methods necessary to return their dimensions. The program also creates a parallelepiped subclass, and the methods necessary to return the dimensions of an object in the parallelepiped subclass.
 
-    Read/Review: all materials linked to the content page / all videos linked to the content page
-    Participate in Discussion 01: Object-Oriented Programming Concepts - Initial Response due on or before 11:59 pm ET on Friday, 02/10/2023. Post responses to at least two classmates on or before 11:59 pm ET, on Tuesday, 02/14/2023
-    Participate in Live Session: Thursday, 02/09/2023 beginning at 7:00 pm ET
-    Complete Assignment 01: Programming Project 04 - due on or before 11:59 pm ET, on Tuesday, 02/14/2023
+# Assignment 4 Algorithm
+1. First, we create the Rectangle class.
+2. We then create methods for this class - an area() and perimeter() method to return the afformentioned calculations, and then a display() method to print the dimensions of the object in the class Rectangle.
+3. Next, we create a Parallelepiped class.
+4. We then create methods for this class - a volume() methond to return the afformentioned calculations, and a display() method to print the dimensions of the object in the class Parallelepiped.
+5. Lastly, to make sure everything is working, we create these objects and print them to the terminal.
