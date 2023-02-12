@@ -1,75 +1,76 @@
-class Rectangle:
-    '''
-    Words go here
-    '''
-    #  we use the __init__ method initiate the class as soon as it's called.
-    # for instance, as soon r1 = Rectangle(2,4) is declared, that object with those
-    # attributes is created.
-    def __init__(self, length, width):
-        self.length = length 
-        self.width = width
+from project04classes import *
 
-    # this bit of code that looks like a function is actually a method
-    # a function is called like so: perimeter(square)
-    # a method is called on something like so: square.perimeter() 
-    def perimeter(self):
-        '''Summary of perimeter() method
-        This method can be called on objects of the Rectangle class to 
-        return the perimeter of the object.
-        ''' 
-        perimeter = (self.length * 2) + (self.width * 2)
-        return perimeter
+print("Calculate the Dimensions of a Rectangle")
 
-    def area(self):
-        '''Summary of area() method
-        This method can be called on objects of the Rectangle class to 
-        return the area of the object.
-        ''' 
-        area = self.length * self.width
-        return area
+def validEntry(input):
+    try:
+        input = int(input)
+        if input > 0:
+            return = True, input
+    except:
+        try:
+            input = float(input) 
+            if input > 0:
+                return = True, input
+        except:
+            return False
 
-    def display(self):
-        '''Summary of display() method
-        This method can be called on objects of the Rectangle class to 
-        print the dimensions of the object.
-        ''' 
-        print(f'''The dimensions of the Rectangle are:
-Length = {self.length}
-Width = {self.width}
-Area = {self.area()}
-Perimeter = {self.perimeter()}
-''')
-    
-class Parallelepiped(Rectangle):
-    # with this child class, we need to make sure we call the attributes we need,
-    # but if attributes are already part of the parent class, we use the below 
-    # super() function to correctly reference them from the parent class.
-    def __init__(self, length, width, height):
-        # we use super() function to bring reference the attributes from the parent class
-        super().__init__(length, width)
-        self.height = height
 
-    def volume(self):
-        '''Summary of volume() method
-        This method can be called on objects of the Parallelepiped class to 
-        return the volume of the object.
-        ''' 
-        volume = self.length * self.width * self.height
-        return volume
+validLength = False
+while not validLength:
+    length = input("Enter the length: ")
+    if validEntry(length) == True
+    try:
+        length = int(length)
+        if length > 0:
+            validLength = True
+            break
+    except:
+        try:
+            length = float(length) 
+            if length > 0:
+                validLength = True
+                break
+        except:
+            print("Please enter a number.")
 
-    def display(self):
-        '''Summary of display() method
-        This method can be called on objects of the Parallelepiped class to 
-        print the dimensions of the object.
-        ''' 
-        print(f'''The dimensions of the Parallelepiped are:
-Length = {self.length}
-Width = {self.width}
-Height = {self.height}
-Volume = {self.volume()}
-''')
+validWidth = False
+while not validWidth:
+    width = input("Enter the width: ")
+    try:
+        width = int(width)
+        if width > 0:
+            validWidth = True
+            break
+    except:
+        try:
+            width = float(width)
+            if width > 0:
+                validWidth = True
+                break
+        except:
+            print("Please enter a number.")
 
-r1 = Rectangle(4, 5)
-r2 = Parallelepiped(4,5,6)
-r1.display()
-r2.display()
+shape1 = Rectangle(length, width)
+shape1.display()
+
+print("Calculate the Dimensions of a Parallelepiped.")
+
+validHeight = False
+while not validHeight:
+    height = input("Enter the height: ")
+    try:
+        height = int(height)
+        if height > 0:
+            validHeight = True
+            break
+    except:
+        try:
+            height = float(height) 
+            if height > 0:
+                validHeight = True
+                break
+        except:
+            print("Please enter a number.")
+
+shape2 = Parallelepiped()
