@@ -1,76 +1,95 @@
 from project04classes import *
 
-print("Calculate the Dimensions of a Rectangle")
-
 def validEntry(input):
+    '''Summary of validEntry() Function
+    This function tests whether the input entered by a
+    user is valid for mathematical calculations. The function
+    determines whether the input can be converted to an int()
+    or a float(), and then returns the appropriate type.
+    If it can't be converted, the function returns FALSE
+
+    Parameters:
+    input (str): This str() is entered by the user using the INPUT function.
+
+    Returns:
+    int, float, or FALSE.
+    int: If the users input can be succesfully converted to an int.
+    float: If the users input can be succesfully converted to a float.
+    FALSE: If the users input cannot be converted to either an int or float.
+    '''
     try:
-        input = int(input)
-        if input > 0:
-            return = True, input
+        if "." in input:
+            input = float(input)
+            return(input)
+        else:
+            input = int(input)
+            return(input)
     except:
-        try:
-            input = float(input) 
-            if input > 0:
-                return = True, input
-        except:
-            return False
+        return False
 
+if __name__ == "__main__":
 
-validLength = False
-while not validLength:
-    length = input("Enter the length: ")
-    if validEntry(length) == True
-    try:
-        length = int(length)
-        if length > 0:
+    print("Calculate the Dimensions of a Rectangle")
+
+    validLength = False
+    while not validLength:
+        length = input("Enter the length: ")
+        length = validEntry(length)
+        if validEntry(length) != False:
             validLength = True
             break
-    except:
-        try:
-            length = float(length) 
-            if length > 0:
-                validLength = True
-                break
-        except:
+        else:          
             print("Please enter a number.")
 
-validWidth = False
-while not validWidth:
-    width = input("Enter the width: ")
-    try:
-        width = int(width)
-        if width > 0:
+    print(length)
+    print(type(length))
+
+    validWidth = False
+    while not validWidth:
+        width = input("Enter the width: ")
+        width = validEntry(width)
+        if validEntry(width) != False:
             validWidth = True
             break
-    except:
-        try:
-            width = float(width)
-            if width > 0:
-                validWidth = True
-                break
-        except:
+        else:
             print("Please enter a number.")
 
-shape1 = Rectangle(length, width)
-shape1.display()
+    shape1 = Rectangle(length, width)
+    print()
+    shape1.display()
 
-print("Calculate the Dimensions of a Parallelepiped.")
+    print("Calculate the Dimensions of a Parallelepiped.")
 
-validHeight = False
-while not validHeight:
-    height = input("Enter the height: ")
-    try:
-        height = int(height)
-        if height > 0:
+    validLength = False
+    while not validLength:
+        length = input("Enter the length: ")
+        length = validEntry(length)
+        if validEntry(length) != False:
+            validLength = True
+            break
+        else:          
+            print("Please enter a number.")
+
+    validWidth = False
+    while not validWidth:
+        width = input("Enter the width: ")
+        width = validEntry(width)
+        if validEntry(width) != False:
+            validWidth = True
+            break
+        else:
+            print("Please enter a number.")
+
+    validHeight = False
+    while not validHeight:
+        height = input("Enter the height: ")
+        height = validEntry(height)
+        if validEntry(width) != False:
             validHeight = True
             break
-    except:
-        try:
-            height = float(height) 
-            if height > 0:
-                validHeight = True
-                break
-        except:
+        else:
             print("Please enter a number.")
 
-shape2 = Parallelepiped()
+    shape2 = Parallelepiped(length, width, height)
+    print()
+    shape2.display()
