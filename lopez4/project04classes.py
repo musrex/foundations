@@ -42,6 +42,10 @@ Perimeter = {self.perimeter()}
 ''')
     
 class Parallelepiped(Rectangle):
+    '''
+    Creates an object of the Parallelepiped subclass (parent class: Rectangle)
+    Attributes: LENGTH, WIDTH, HEIGHT
+    '''
     # with this child class, we need to make sure we call the attributes we need,
     # but if attributes are already part of the parent class, we use the below 
     # super() function to correctly reference them from the parent class.

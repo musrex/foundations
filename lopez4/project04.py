@@ -17,6 +17,7 @@ def validEntry(input):
     float: If the users input can be succesfully converted to a float.
     FALSE: If the users input cannot be converted to either an int or float.
     '''
+    input = str(input)
     try:
         if "." in input:
             input = float(input)
@@ -40,9 +41,6 @@ if __name__ == "__main__":
             break
         else:          
             print("Please enter a number.")
-
-    print(length)
-    print(type(length))
 
     validWidth = False
     while not validWidth:
