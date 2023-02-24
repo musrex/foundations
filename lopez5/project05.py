@@ -2,7 +2,8 @@ class Student:
     def __init__(self, name, age):
         self.name = str(name)
         self.age = str(age)
-
+    
+    # this method prints out the attributes of the Student parent class
     def display(self):
         print(f'''
 Student
@@ -13,7 +14,8 @@ class Doctor(Student):
     def __init__(self, name, age, hopsital):
         super().__init__(name, age)
         self.hospital = str(hopsital)
-
+    
+    # this method prints out the attributes of the Doctor subclass
     def display(self):
         print(f'''
 Doctor
@@ -26,6 +28,7 @@ class Engineer(Student):
         super().__init__(name, age)
         self.courses = str(courses)
 
+    # this method prints out the attributes of the Engineer subclass
     def display(self):
         print(f'''
 Engineer        
