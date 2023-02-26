@@ -1,9 +1,10 @@
 from transports import *
+from options import *
 
+mainStation = Terminal()
 
-def main():
+def main():   
     
-    mainStation = Terminal()
     print('''
 Welcome to the Central Terminal!
 What would you like to do?
@@ -22,68 +23,22 @@ to the menu item.
 3. See All Transports
 4. Quit
 ''')
-        option = input('Enter: ')
+        selection = input('Enter: ')
         print()
-        # we put the majority of our code
-        # in this try block so that we
-        # have a way to deal with invalid entrys
-        try:
-            if option == '4':
-                run = False
-                print('Have a nice day!')
-                break
-            elif option == '3':
-                print('''<-W-|-E->
----------''')
-                mainStation.display()
-                enter = input('\nPress Enter to Continue')
-                print()
-            elif option == '1':
-                answered = False
-                while not answered:
-                    transport = input('Enter transport ID: ')
-                    print()
-                    
-                    # another try block
-                    # but this time we try to 
-                    # convert their input into
-                    # a string as a way to 
-                    # validate entries,
-                    # and then just convert 
-                    # transport back str 
-                    # upon append.
-                    try:
-                        transport = int(transport)
-                        mainStation.west(str(transport))
-                        answered = True
-                        break
-                    except:
-                        print('ERROR: ENTER NUMBER')
-            elif option == '2':
-                answered = False
-                while not answered:
-                    transport = input('Enter transport ID: ')
-                    print()
-                    try:
-                        transport = int(transport)
-                        mainStation.east(str(transport))
-                        answered = True
-                        break
-                    except:
-                        print('ERROR: ENTER NUMBER')
-        except:
-            print('Please enter a number.')
-        #answered = False
-        #while not answered:
-        #    eastUnits = input('Do we have transports from the east? ')
-        #    westUnits = input('Do we have transports from the west? ')
-#
-        #    mainStation.east(eastUnits)
-        #    mainStation.west(westUnits)
-#
-        #    result = mainStation.size()
-#
-        #stack.display()
-        #print(result)
 
-main()
+        if selection == "":
+            continue
+        elif options(selection) in range(1,3):
+            addTransport(options(selection), mainStation)
+        elif options(selection) == 3:
+            print('''<-W-|-E->''')        
+            mainStation.display()
+            enter = input('\nPress Enter to Continue')
+            print()
+        elif options(selection) == 4:
+            run = False
+            print('Have a nice day!')
+            break            
+
+if __name__=='__main__':
+    main()
