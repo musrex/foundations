@@ -16,7 +16,7 @@ def options(selection):
     except ValueError:
         return input('ERROR: Please enter a number in the range of 1-4. \nPress Enter to Continue.')
 
-def addTransport(direction, terminal):
+def addTransport(direction, terminal, transport):
     '''Summary of ADDTRANSPORT Function:
     This function adds a transport to a terminal
 
@@ -27,24 +27,16 @@ def addTransport(direction, terminal):
 
     terminal(Class): This terminal is our deque the transport will be added to.
 
+    transport(str): The item being added to our deque
+
     Returns:
     '''
-    answered = False
-    while not answered:
-        try:
-            transport = int(input('Enter transport ID: '))
-            print()
-            if direction == 1:
-                terminal.west(str(transport))
-                print('Success!')
-                answered = True
-                break
-            elif direction == 2:
-                terminal.east(str(transport))
-                answered = True
-                print('Success!')
-                break
-        except TypeError:
-            input('ERROR: Please enter a number. \nPress Enter to Continue.')
-        except ValueError:
-            input('ERROR: Please enter a number. \nPress Enter to Continue.')
+    if direction == 1:
+        terminal.west(str(transport))
+        return True
+    elif direction == 2:
+        terminal.east(str(transport))
+        return True
+    else:
+        return False
+        
