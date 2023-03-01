@@ -4,14 +4,11 @@ from options import *
 mainStation = Terminal()
 
 def main():   
-    
     print('''
 Welcome to the Central Terminal!
 What would you like to do?
 Use the menu below to navigate.
 ------------------------------''')
-    
-
     # keeps our program running
     run = True
     while run:
@@ -25,16 +22,16 @@ to the menu item.
 ''')
         selection = input('Enter: ')
         print()
-
         if selection == "":
             continue
+        # Here, we use the options class to validate user input
         elif options(selection) == 4:
             run = False
             print('Have a nice day!')
             break  
         elif options(selection) == 3:
             print('''<-W-|-E->''')        
-            mainStation.display()
+            print(mainStation.items)
             enter = input('\nPress Enter to Continue')
             print()
         elif options(selection) == 1 or options(selection) == 2:
@@ -42,8 +39,8 @@ to the menu item.
             while not answered:
                 try:
                     transport = int(input('Enter transport ID: '))
-                    print()                            
-
+                    print()
+                    # addTransport() uses the appropriate method to insert items to the deque
                     if addTransport(options(selection), mainStation, transport):
                         print('Success!')
                         answered = True

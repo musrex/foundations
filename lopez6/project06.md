@@ -6,7 +6,7 @@ in a deque data type.
 # Assignment 5 Algorithm
 1. First, we create the Terminal class, 
 our double ended queue data type.
-2. We define the methods that allow us to add to the queue
+2. We define the methods that allow us to add to the deque
 from either direction.
 3. Then we prompt the staff member.
 4. The staff member should have the ability to add transports 
