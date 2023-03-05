@@ -6,6 +6,10 @@ class BankUtility:
         
     def promptUserForString(prompt):
         # implement promptUserForString here
+        try:
+            answer = input(prompt)
+        except ValueError:
+            return "Please enter a string."
         
         return "" # be sure to change this
 
