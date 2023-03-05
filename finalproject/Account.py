@@ -25,16 +25,17 @@ class Account:
     def setLastName(self, lname):
         self.lastName = lname
 
-    def setSSN(self, ssn_input):
-        run = True
-        while run:
-            ssn_input = input("Enter Account Owner's SSN (9 digits):")
-            if len(input) == 8:
-                self.ssn = ssn_input
-                run = False
-                break
-            else:
-                pass
+    def setSSN(self,ssn_input):
+        self.ssn = ssn_input
+        #run = True
+        #while run:
+        #    ssn_input = input("Enter Account Owner's SSN (9 digits):")
+        #    if len(input) == 9:
+        #        self.ssn = ssn_input
+        #        run = False
+        #        break
+        #    else:
+        #        print("Please try again")
 
     # deposit and withdraw
     def deposit(self, amount):
@@ -75,7 +76,7 @@ Balance: {self.bal}
 ============================================================''')
     
     
-    def isValidPIN(entered_pin):
+    def isValidPIN(self, entered_pin):
         if self.pin == entered_pin:
                 return True
         return False
