@@ -1,7 +1,12 @@
 
 class Bank:
+    def __init__(self) -> None:
+        self.accounts = []
+        self.accountsLimit = 2
+        pass
     
-    def addAccountToBank(account):
+
+    def addAccountToBank(self,account):
         
         # implement addAccountToBank here
         
@@ -20,5 +25,5 @@ class Bank:
     
 
     def addMonthlyInterest(percent):
-       
+        pass
         # EXTRA CREDIT

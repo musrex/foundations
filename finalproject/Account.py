@@ -1,34 +1,84 @@
-
+import random
 
 
 class Account:
     # add your attributes here
+    def __init__(self) -> None:
+        self.accountNum = None
+        self.firstName = None
+        self.lastName = None
+        self.ssn = "XXX-XX-"
+        self.pin = None
+        self.bal = "$0.00"
+        pass
     
-    # add methods as getters and setters for attributes
-       
 
-    def deposit(amount):
-        # implement deposit here
-        
-        return 0
+    # getters for first and last name
+    def getFirstName(self):
+        return self.firstName
+    def getLastName(self):
+        return self.lastName
+
+    # setters for first and last name
+    def setFirstName(self, fname):
+        self.firstName = fname
+    def setLastName(self, lname):
+        self.lastName = lname
+
+    # deposit and withdraw
+    def deposit(self, amount):
+        self.bal == self.bal + amount
+    def withdraw(self, amount):
+        if self.bal < amount:
+            self.bal = self.bal - amount
+        else: 
+            return "Insufficient funds"
     
+    def setPin(self):
+        first = str(random.randint(0, 9))
+        second = str(random.randint(0, 9))
+        third = str(random.randint(0, 9))
+        fourth = str(random.randint(0, 9))
+        self.pin = first+second+third+fourth
+    
+    def getPin(self):
+        return f"PIN #: {self.pin}"
+
+    def setAccountNumber(self):
+        base = []
+        for x in range(8):
+            x = str(random.randint(0,9))
+            base.append(x)
+        acct = "".join(base)
+        self.accountNum = acct
   
-    def withdraw(amount):
-        
-        # implement withdraw here
-        
-        return 0 # be sure to change this
+    
+    def display(self):
+        print(f'''============================================================
+Account Number: {self.accountNum}
+Owner First Name: {self.firstName}
+Owner Last Name: {self.lastName}
+Owner SSN: {self.ssn}
+PIN: {self.pin}
+Balance: {self.bal}
+============================================================''')
     
     
-    def isValidPIN(pin):
-        
-        # implement isValidPIN here
-        
-        return False  # be sure to change this
+    def isValidPIN(entered_pin):
+        if self.pin == entered_pin:
+                return True
+        return False
     
     
     # all objects have a toString method - this indicates you are providing
     # your own version
     def __repr__(self):
-        return "" # change this as needed
+        return f'============================================================ \
+Account Number: {self.accountNum} \
+Owner First Name: {self.firstName} \
+Owner Last Name: {self.lastName} \
+Owner SSN: {self.ssn} \
+PIN: {self.pin} \
+Balance: {self.bal} \
+============================================================' # change this as needed
 

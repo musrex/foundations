@@ -2,6 +2,7 @@
 class BankUtility:
     
     def __init(self):
+        pass
         
     def promptUserForString(prompt):
         # implement promptUserForString here
@@ -42,3 +43,4 @@ class BankUtility:
                 return False
         except ValueError:
             return False
+
