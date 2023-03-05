@@ -1,4 +1,4 @@
-def intpolsearch(values,x ):
+def intpolsearch(values, x):
    idx0 = 0
    idxn = (len(values) - 1)
    while idx0 <= idxn and x >= values[idx0] and x <= values[idxn]:
@@ -12,5 +12,5 @@ def intpolsearch(values,x ):
          idx0 = mid + 1
    return "Searched element not in the list"
 
-l = [2, 6, 11, 19, 27, 31, 45, 121]
-print(intpolsearch(l, 2))
+l = ['hello', 'heck', 'tree', 'mouse', 'a', 'b', '45', '121']
+print(intpolsearch(l, 'tree'))

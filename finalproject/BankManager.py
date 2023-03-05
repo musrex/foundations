@@ -30,20 +30,32 @@ What do you want to do?
                         run = False
                         break
                     elif menu_item == 1:
-                        newAccount = Account()
-                        print("OPEN ACCOUNT")
-                        fName = input("Enter Account Owner's First Name:\n")
-                        lName = input("Enter Account Owner's Last Name:\n")
-                        ssn_input = input("Enter Account Owner's SSN (9 digits):")
-                        newAccount.setFirstName(fName)
-                        newAccount.setLastName(lName)
-                        newAccount.setSSN(ssn_input)
-                        newAccount.setPin()
-                        newAccount.setAccountNumber()
-                        newAccount.display()
+                        if len(self.bank.accounts) <= self.bank.accountsLimit:
+                            for account in self.accounts:
+                                if self.accountNum() == account_num:
+                                    return self.accounts.append(account)
+                        else:
+                            print("too many accounts")
+                        #3newAccount = Account()
+                        #3print("OPEN ACCOUNT")
+                        #3fName = input("Enter Account Owner's First Name:\n")
+                        #3lName = input("Enter Account Owner's Last Name:\n")
+                        #3ssn_input = input("Enter Account Owner's SSN (9 digits):")
+                        #3newAccount.setFirstName(fName)
+                        #3newAccount.setLastName(lName)
+                        #3newAccount.setSSN(ssn_input)
+                        #3newAccount.setPin()
+                        #3newAccount.setAccountNumber()
+                        #3newAccount.display()
+                        self.bank.addAccountToBank(newAccount)
                         cont = input("Press Enter to Continue ")
                     elif menu_item == 2:
                         newAccount.display()
+                        acct = input("Enter account number:\n")
+                        pin = input("Enter PIN number:\n")
+                        for accounts in self.bank.accounts:
+                            addAccountToBank(acct)
+
                         pass
                     elif menu_item == 3:
                         pass

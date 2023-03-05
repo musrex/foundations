@@ -1,16 +1,20 @@
+from Account import *
 
 class Bank:
     def __init__(self) -> None:
-        self.accounts = []
-        self.accountsLimit = 2
-        pass
+        self.accounts = ['1']
+        self.accountsLimit = 1
     
 
-    def addAccountToBank(self,account):
-        
-        # implement addAccountToBank here
-        
-        return False; # be sure to change this as needed
+    def addAccountToBank(self,account_num):
+        if len(accounts) <= accountsLimit:
+            for account in self.accounts:
+                if self.accountNum() == account_num:
+                    return self.accounts.append(account)
+            # implement addAccountToBank here
+        else:
+            print("No more accounts available")
+            return False # be sure to change this as needed
 
     def removeAccountFromBank(account):
 

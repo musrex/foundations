@@ -20,6 +20,7 @@ class BankUtility:
         return 0.0 # be sure to change this
     
     def generateRandomInteger(min, max):
+        str(random.randint(0, 9))
         # implement generateRandomInteger here
         
         return 0 # be sure to change as needed
