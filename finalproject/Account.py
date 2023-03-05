@@ -25,6 +25,17 @@ class Account:
     def setLastName(self, lname):
         self.lastName = lname
 
+    def setSSN(self, ssn_input):
+        run = True
+        while run:
+            ssn_input = input("Enter Account Owner's SSN (9 digits):")
+            if len(input) == 8:
+                self.ssn = ssn_input
+                run = False
+                break
+            else:
+                pass
+
     # deposit and withdraw
     def deposit(self, amount):
         self.bal == self.bal + amount
@@ -73,7 +84,7 @@ Balance: {self.bal}
     # all objects have a toString method - this indicates you are providing
     # your own version
     def __repr__(self):
-        return f'============================================================ \
+        rep = f'============================================================ \
 Account Number: {self.accountNum} \
 Owner First Name: {self.firstName} \
 Owner Last Name: {self.lastName} \
@@ -81,4 +92,4 @@ Owner SSN: {self.ssn} \
 PIN: {self.pin} \
 Balance: {self.bal} \
 ============================================================' # change this as needed
-
+        return rep
