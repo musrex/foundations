@@ -1,3 +1,7 @@
+from Account import *
+from Bank import *
+
+import random
 
 class BankUtility:
     
@@ -8,27 +12,24 @@ class BankUtility:
         # implement promptUserForString here
         try:
             answer = input(prompt)
+            return answer
         except ValueError:
-            return "Please enter a string."
-        
-        return "" # be sure to change this
+            return "Please enter a string."        
 
     def promptUserForPositiveNumber(prompt):
-        
+        try:
+            return int((float(input(prompt))) * 10)  
+        except ValueError:
+            return "Amount cannot be negative.  Try again"
         # implement promptUserForPositiveNumber here
         
         return 0.0 # be sure to change this
     
     def generateRandomInteger(min, max):
-        str(random.randint(0, 9))
-        # implement generateRandomInteger here
-        
-        return 0 # be sure to change as needed
+        return random.randint(min, max)
     
-    def convertFromDollarsToCents(amount):        
-        # implement convertFromDollarsToCents here     
-        
-        return 0 # be sure to change as needed
+    def convertFromDollarsToCents(amount):    
+        return int(amount * 100)
     
     '''
       Checks if a given string is a number (long)

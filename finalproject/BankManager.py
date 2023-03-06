@@ -24,58 +24,39 @@ What do you want to do?
 ============================================================ ''')
             menu_item = input("Enter #: ")
             try:
-                if int(menu_item):
-                    menu_item = int(menu_item)
-                    if menu_item == 11:
-                        run = False
-                        break
-                    elif menu_item == 1:
-                        if len(self.bank.accounts) <= self.bank.accountsLimit:
-                            for account in self.accounts:
-                                if self.accountNum() == account_num:
-                                    return self.accounts.append(account)
-                        else:
-                            print("too many accounts")
-                        #3newAccount = Account()
-                        #3print("OPEN ACCOUNT")
-                        #3fName = input("Enter Account Owner's First Name:\n")
-                        #3lName = input("Enter Account Owner's Last Name:\n")
-                        #3ssn_input = input("Enter Account Owner's SSN (9 digits):")
-                        #3newAccount.setFirstName(fName)
-                        #3newAccount.setLastName(lName)
-                        #3newAccount.setSSN(ssn_input)
-                        #3newAccount.setPin()
-                        #3newAccount.setAccountNumber()
-                        #3newAccount.display()
-                        self.bank.addAccountToBank(newAccount)
-                        cont = input("Press Enter to Continue ")
-                    elif menu_item == 2:
-                        newAccount.display()
-                        acct = input("Enter account number:\n")
-                        pin = input("Enter PIN number:\n")
-                        for accounts in self.bank.accounts:
-                            addAccountToBank(acct)
-
-                        pass
-                    elif menu_item == 3:
-                        pass
-                    elif menu_item == 4:
-                        pass
-                    elif menu_item == 5:
-                        pass
-                    elif menu_item == 6:
-                        pass
-                    elif menu_item == 7:
-                        pass
-                    elif menu_item == 8:
-                        pass
-                    elif menu_item == 9:
-                        pass
-                    elif menu_item == 10:
-                        pass
-            except TypeError: "Please enter a number"
-
+            
+                # For ending program
+                if options(menu_item) == 11:
+                    run = False
+                    break
+                # For adding an account
+                elif options(menu_item) == 1:
+                    self.bank.openAccount()
+                # For displaying the account information    
+                elif options(menu_item) == 2:
+                    BankManager.promptForAccountNumberAndPIN(self.bank)
         
+
+                    pass
+                elif menu_item == 3:
+                    pass
+                elif menu_item == 4:
+                    pass
+                elif menu_item == 5:
+                    pass
+                elif menu_item == 6:
+                    pass
+                elif menu_item == 7:
+                    pass
+                elif menu_item == 8:
+                    pass
+                elif menu_item == 9:
+                    pass
+                elif menu_item == 10:
+                    pass
+            except TypeError: "Please enter a number"
+# 07432795
+# 5318        
         
         # This is where you will implement your ‘main’ method and start
         # the program from.  The BankManager class should create an instance
@@ -85,12 +66,12 @@ What do you want to do?
        
     @staticmethod    
     def promptForAccountNumberAndPIN(bank):
-        
-        pin = input("Enter PIN: ")
-        if pin.isValidPIN():
-            pass    
+        acct = input("Enter account number:\n")
+        pin = input("Enter PIN number:\n")
+        if pin.isValidPIN(pin):
+            return acct, pin   
         else:
-            print("Please enter a 4 digit PIN.")      
+            print("Please enter a valid PIN.")      
               
 
         
@@ -103,4 +84,20 @@ What do you want to do?
         
          # be sure to change this as needed
 
+def options(selection):
+    '''Summary of OPTIONS Function:
+    This function validates the users input
+    
+    Parameters:
+    selection(str): Selection should be input entered via input() function.
 
+    Returns: INT in range 1-4, corresponding with the 4 menu items
+    '''
+    try:
+        selection = int(selection)
+        if selection in range(1,11):
+            return selection
+    except TypeError:
+        return input('ERROR: Please enter a number. \nPress Enter to Continue.')
+    except ValueError:
+        return input('ERROR: Please enter a number in the range of 1-4. \nPress Enter to Continue.')

@@ -1,5 +1,5 @@
 import random
-
+from BankUtility import *
 
 class Account:
     # add your attributes here
@@ -25,17 +25,11 @@ class Account:
     def setLastName(self, lname):
         self.lastName = lname
 
+    # getters and setters for SSN
     def setSSN(self,ssn_input):
         self.ssn = ssn_input
-        #run = True
-        #while run:
-        #    ssn_input = input("Enter Account Owner's SSN (9 digits):")
-        #    if len(input) == 9:
-        #        self.ssn = ssn_input
-        #        run = False
-        #        break
-        #    else:
-        #        print("Please try again")
+    def getSSN(self):
+        return "XXX-XX-" + self.ssn[6:]
 
     # deposit and withdraw
     def deposit(self, amount):
@@ -45,12 +39,12 @@ class Account:
             self.bal = self.bal - amount
         else: 
             return "Insufficient funds"
-    
+
     def setPin(self):
-        first = str(random.randint(0, 9))
-        second = str(random.randint(0, 9))
-        third = str(random.randint(0, 9))
-        fourth = str(random.randint(0, 9))
+        first = str(BankUtility.generateRandomInteger(0, 9))
+        second = str(BankUtility.generateRandomInteger(0, 9))
+        third = str(BankUtility.generateRandomInteger(0, 9))
+        fourth = str(BankUtility.generateRandomInteger(0, 9))
         self.pin = first+second+third+fourth
     
     def getPin(self):
@@ -63,7 +57,9 @@ class Account:
             base.append(x)
         acct = "".join(base)
         self.accountNum = acct
-  
+    
+    def getAccountNumber(self):
+        return self.accountNum
     
     def display(self):
         print(f'''============================================================
@@ -77,20 +73,18 @@ Balance: {self.bal}
     
     
     def isValidPIN(self, entered_pin):
-        if self.pin == entered_pin:
+        if int(entered_pin) == int(self.pin):
                 return True
-        return False
+        return False, "Invalid PIN"
     
     
-    # all objects have a toString method - this indicates you are providing
-    # your own version
-    def __repr__(self):
-        rep = f'============================================================ \
+    def toString(self):
+        string = f'============================================================ \
 Account Number: {self.accountNum} \
 Owner First Name: {self.firstName} \
 Owner Last Name: {self.lastName} \
 Owner SSN: {self.ssn} \
 PIN: {self.pin} \
 Balance: {self.bal} \
-============================================================' # change this as needed
-        return rep
+============================================================'
+        return string
