@@ -2,9 +2,30 @@ from Bank import *
 from BankUtility import *
 from Account import *
 
+
+def options(selection):
+    '''Summary of OPTIONS Function:
+    This function validates the users input
+    
+    Parameters:
+    selection(str): Selection should be input entered via input() function.
+
+    Returns: INT in range 1-4, corresponding with the 4 menu items
+    '''
+    try:
+        selection = int(selection)
+        if selection in range(1,11):
+            return selection
+    except TypeError:
+        return input('ERROR: Please enter a number. \nPress Enter to Continue.')
+    except ValueError:
+        return input('ERROR: Please enter a number in the range of 1-4. \nPress Enter to Continue.')
+
+def changePin
+
 class BankManager:
     def __init__(self):
-        self.bank = Bank()
+        bank = Bank()
 
         run = True
         while run:
@@ -25,16 +46,21 @@ What do you want to do?
             menu_item = input("Enter #: ")
             try:
             
-                # For ending program
+                # For ending program 32191678 13123
                 if options(menu_item) == 11:
                     run = False
                     break
                 # For adding an account
                 elif options(menu_item) == 1:
-                    self.bank.openAccount()
+                    bank.openAccount()
+                    
                 # For displaying the account information    
                 elif options(menu_item) == 2:
-                    BankManager.promptForAccountNumberAndPIN(self.bank)
+                    acct = input("Enter account number:\n")
+                    bank.findAccount(acct)
+                    account.display()
+                    
+                    #BankManager.promptForAccountNumberAndPIN(self.bank)
         
 
                     pass
@@ -55,8 +81,7 @@ What do you want to do?
                 elif menu_item == 10:
                     pass
             except TypeError: "Please enter a number"
-# 07432795
-# 5318        
+      
         
         # This is where you will implement your ‘main’ method and start
         # the program from.  The BankManager class should create an instance
@@ -67,9 +92,12 @@ What do you want to do?
     @staticmethod    
     def promptForAccountNumberAndPIN(bank):
         acct = input("Enter account number:\n")
-        pin = input("Enter PIN number:\n")
-        if pin.isValidPIN(pin):
-            return acct, pin   
+        acct = bank.findAccount(acct)
+
+        if acct is not None:
+            pin = input("Enter PIN number:\n")
+            if account.isValidPIN(pin):
+                return acct, pin   
         else:
             print("Please enter a valid PIN.")      
               
@@ -84,20 +112,5 @@ What do you want to do?
         
          # be sure to change this as needed
 
-def options(selection):
-    '''Summary of OPTIONS Function:
-    This function validates the users input
-    
-    Parameters:
-    selection(str): Selection should be input entered via input() function.
 
-    Returns: INT in range 1-4, corresponding with the 4 menu items
-    '''
-    try:
-        selection = int(selection)
-        if selection in range(1,11):
-            return selection
-    except TypeError:
-        return input('ERROR: Please enter a number. \nPress Enter to Continue.')
-    except ValueError:
-        return input('ERROR: Please enter a number in the range of 1-4. \nPress Enter to Continue.')
+    

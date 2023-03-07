@@ -7,10 +7,23 @@ class Account:
         self.accountNum = None
         self.firstName = None
         self.lastName = None
-        self.ssn = "XXX-XX-"
+        self.ssn = None
         self.pin = None
         self.bal = "$0.00"
-        pass
+        
+    def genPin(self):
+        a = str(BankUtility.generateRandomInteger(0, 9))
+        b = str(BankUtility.generateRandomInteger(0, 9))
+        c = str(BankUtility.generateRandomInteger(0, 9))
+        d = str(BankUtility.generateRandomInteger(0, 9))
+        self.pin = a+b+c+d
+
+    def genAccNum(self):
+        a = str(BankUtility.generateRandomInteger(0, 9))
+        b = str(BankUtility.generateRandomInteger(0, 9))
+        c = str(BankUtility.generateRandomInteger(0, 9))
+        d = str(BankUtility.generateRandomInteger(0, 9))
+        self.accountNum = a+b+c+d
     
 
     # getters for first and last name
@@ -40,12 +53,8 @@ class Account:
         else: 
             return "Insufficient funds"
 
-    def setPin(self):
-        first = str(BankUtility.generateRandomInteger(0, 9))
-        second = str(BankUtility.generateRandomInteger(0, 9))
-        third = str(BankUtility.generateRandomInteger(0, 9))
-        fourth = str(BankUtility.generateRandomInteger(0, 9))
-        self.pin = first+second+third+fourth
+    def setPin(self, pin_num):
+        self.pin = pin_num
     
     def getPin(self):
         return f"PIN #: {self.pin}"

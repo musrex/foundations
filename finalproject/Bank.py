@@ -7,14 +7,14 @@ class Bank:
         self.accountsLimit = 2
     
 
-    def addAccountToBank(self,account_num):
+    def addAccountToBank(self,newAccount):
+        '''This function takes in a new account as a parameter
+        and appends it to our list of bank accounts'''
         if len(self.accounts) >= self.accountsLimit:
             print("No more accounts available")
             return False # be sure to change this as needed
         else:
-            for account in self.accounts:
-                if account == None:
-                    return True, self.accounts.append(account)
+            return True, self.accounts.append(newAccount)
             
 
     def removeAccountFromBank(account):
@@ -23,9 +23,11 @@ class Bank:
 
         #return False; # be sure to change this as needed
   
-    def findAccount(self, accountNum):
+    def findAccount(self, account_num):
+        '''This function finds the matching account in the 
+        bank account list and returns it'''
         for account in self.accounts:
-            if accountNum == self.accountNum:
+            if account.getAccountNumber() == account_num:
                 return account
         return "Searched element not in the list"
 
@@ -43,8 +45,8 @@ class Bank:
         newAccount.setFirstName(fName)
         newAccount.setLastName(lName)
         newAccount.setSSN(ssn_input)
-        newAccount.setPin()
-        newAccount.setAccountNumber()
+        newAccount.genPin()
+        newAccount.genAccNum()
         newAccount.display()
         self.addAccountToBank(newAccount)
             
