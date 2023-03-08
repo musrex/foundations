@@ -6,7 +6,12 @@ class CoinCollector:
         pass
     
     def parseChange(coins):
-       
+        P = 001
+        N = 005
+        D = 010
+        Q = 025
+        H = 050
+        W = 100 
         # implement parseChange here
         #◦ ‘P’ represents a penny (1 cent)
         #◦ ‘N’ represents a nickel (5 cents)
