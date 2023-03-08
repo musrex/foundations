@@ -49,7 +49,4 @@ class Bank:
         newAccount.genAccNum()
         newAccount.display()
         self.addAccountToBank(newAccount)
-            
-        #else:
-        #    print('Something went wrong.')
         cont = input("Press Enter to Continue ")

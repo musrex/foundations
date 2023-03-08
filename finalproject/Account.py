@@ -88,12 +88,12 @@ Balance: {self.bal}
     
     
     def toString(self):
-        string = f'============================================================ \
-Account Number: {self.accountNum} \
-Owner First Name: {self.firstName} \
-Owner Last Name: {self.lastName} \
-Owner SSN: {self.ssn} \
-PIN: {self.pin} \
-Balance: {self.bal} \
-============================================================'
+        string = f'''============================================================
+Account Number: {self.accountNum}
+Owner First Name: {self.firstName}
+Owner Last Name: {self.lastName}
+Owner SSN: {self.ssn}
+PIN: {self.pin}
+Balance: {self.bal}
+============================================================'''
         return string

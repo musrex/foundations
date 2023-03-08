@@ -1,8 +1,7 @@
 import random
 from timeit import default_timer
-from bubbleSort import bubblesort
+from bubbleSort import *
 from mergeSort import *
-from insertionSort import *
 
 
 def mixer(size):
@@ -72,3 +71,9 @@ merge_sort(list6)
 print(f"Merge sort on 50k item list time:  {default_timer() - start} secs")
 merge_sort(list7)
 print(f"Merge sort on 100k item list time:  {default_timer() - start} secs")
+
+print('--------------------------------------------------------------------')
+
+print('''Because bubble sort needs to iterate through the list multiple times to sort, it doesn't scale well.
+Merge sort, on the other hand, keeps on dividing itself in half until the numbers are sorted. 
+Because merge sort doesn't need to iterate through the entire list, it performs well and scales great.''')

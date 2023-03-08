@@ -3,7 +3,8 @@ from BankUtility import *
 from Account import *
 
 
-def options(selection):
+
+def options():
     '''Summary of OPTIONS Function:
     This function validates the users input
     
@@ -13,15 +14,13 @@ def options(selection):
     Returns: INT in range 1-4, corresponding with the 4 menu items
     '''
     try:
+        selection = input("Enter #: ")
         selection = int(selection)
         if selection in range(1,11):
             return selection
-    except TypeError:
-        return input('ERROR: Please enter a number. \nPress Enter to Continue.')
-    except ValueError:
-        return input('ERROR: Please enter a number in the range of 1-4. \nPress Enter to Continue.')
+    except:
+        input('ERROR: Please enter a number in the range of 1-4. \nPress Enter to Continue.')
 
-def changePin
 
 class BankManager:
     def __init__(self):
@@ -43,42 +42,37 @@ What do you want to do?
 10. Add monthly interest to all accounts
 11. End Program
 ============================================================ ''')
-            menu_item = input("Enter #: ")
+            selection = options()
             try:
             
                 # For ending program 32191678 13123
-                if options(menu_item) == 11:
+                if selection == 11:
                     run = False
                     break
                 # For adding an account
-                elif options(menu_item) == 1:
+                elif selection == 1:
                     bank.openAccount()
                     
                 # For displaying the account information    
-                elif options(menu_item) == 2:
-                    acct = input("Enter account number:\n")
-                    bank.findAccount(acct)
-                    account.display()
-                    
-                    #BankManager.promptForAccountNumberAndPIN(self.bank)
-        
-
+                elif selection == 2:
+                    account = BankManager.promptForAccountNumberAndPIN(bank)
+                    print(account.toString())
+                    cont = input("Press Enter to Continue ")
+                elif selection == 3:
+                    BankManager.changePin(bank)
+                elif selection == 4:
                     pass
-                elif menu_item == 3:
+                elif selection == 5:
                     pass
-                elif menu_item == 4:
+                elif selection == 6:
                     pass
-                elif menu_item == 5:
+                elif selection == 7:
                     pass
-                elif menu_item == 6:
+                elif selection == 8:
                     pass
-                elif menu_item == 7:
+                elif selection == 9:
                     pass
-                elif menu_item == 8:
-                    pass
-                elif menu_item == 9:
-                    pass
-                elif menu_item == 10:
+                elif selection == 10:
                     pass
             except TypeError: "Please enter a number"
       
@@ -91,13 +85,13 @@ What do you want to do?
        
     @staticmethod    
     def promptForAccountNumberAndPIN(bank):
-        acct = input("Enter account number:\n")
-        acct = bank.findAccount(acct)
+        account = input("Enter account number:\n")
+        account = bank.findAccount(account)
 
-        if acct is not None:
+        if account is not None:
             pin = input("Enter PIN number:\n")
             if account.isValidPIN(pin):
-                return acct, pin   
+                return account   
         else:
             print("Please enter a valid PIN.")      
               
@@ -112,5 +106,19 @@ What do you want to do?
         
          # be sure to change this as needed
 
-
     
+    def changePin(bank):
+        account = BankManager.promptForAccountNumberAndPIN(bank)
+        run = True
+        while run:
+            newPin = input('Enter new PIN: ')
+            if BankUtility.isNumeric(newPin) and len(newPin) == 4:
+                confirm = input("Enter new PIN again to confirm:\n")
+                if newPin == confirm:
+                    account.setPin(newPin)
+                    print('PIN updated')
+                    run = False
+                    break
+            else:
+                input("Please enter a valid PIN \nPress Enter to Continue.")
+
