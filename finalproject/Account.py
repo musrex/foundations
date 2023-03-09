@@ -44,12 +44,22 @@ class Account:
     def getSSN(self):
         return "XXX-XX-" + self.ssn[6:]
 
+    def getBal(self):
+        return self.bal
+
     # deposit and withdraw
     def deposit(self, amount):
-        self.bal == self.bal + amount
+        if self.bal == "$0.00":
+            self.bal = 0
+            self.bal = self.bal + amount
+        else:
+            self.bal = self.bal + amount
     def withdraw(self, amount):
-        if self.bal < amount:
-            self.bal = self.bal - amount
+        if self.bal == "$0.00":            
+            self.bal = 0
+            return "Insufficient funds"
+        elif self.bal > amount:
+                self.bal = self.bal - amount
         else: 
             return "Insufficient funds"
 

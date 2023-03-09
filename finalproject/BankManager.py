@@ -52,7 +52,7 @@ What do you want to do?
                 # For adding an account
                 elif selection == 1:
                     bank.openAccount()
-                    
+                 #0096    #1130
                 # For displaying the account information    
                 elif selection == 2:
                     account = BankManager.promptForAccountNumberAndPIN(bank)
@@ -61,64 +61,125 @@ What do you want to do?
                 elif selection == 3:
                     BankManager.changePin(bank)
                 elif selection == 4:
-                    pass
+                    BankManager.depositMoney(bank)
                 elif selection == 5:
-                    pass
+                    BankManager.transferMoney(bank)
                 elif selection == 6:
-                    pass
+                    BankManager.withdrawMoney(bank)
                 elif selection == 7:
-                    pass
+                    BankManager.atmWithdraw(bank)
                 elif selection == 8:
-                    pass
+                    BankManager.depositChange(bank)
                 elif selection == 9:
-                    pass
+                    BankManager.closeAccount(bank)
                 elif selection == 10:
-                    pass
+                    BankManager.monthlyInterest(bank)
             except TypeError: "Please enter a number"
-      
+
         
         # This is where you will implement your ‘main’ method and start
         # the program from.  The BankManager class should create an instance
         # of a Bank object when the program runs and use that instance to
         # manage the Accounts in the bank
 
-       
+    def cont():
+        input('Press Enter to continue.\n')
+
     @staticmethod    
     def promptForAccountNumberAndPIN(bank):
-        account = input("Enter account number:\n")
-        account = bank.findAccount(account)
+        '''This function takes in a bank object, prompts a user for Account
+        number and PIN, and returns the appropriate account.'''
+        account_num = input("Enter account number:\n")
+        account = bank.findAccount(account_num)
 
-        if account is not None:
-            pin = input("Enter PIN number:\n")
-            if account.isValidPIN(pin):
-                return account   
-        else:
-            print("Please enter a valid PIN.")      
-              
-
-        
-        
-        # implement promptForAccountNumberAndPIN here
-        # takes one parameter, a Bank object that represents the bank.
-        # The method should prompt the user to enter an account number
-        # and then try to find a matching account with that account number
-        # in the bank.
-        
-         # be sure to change this as needed
-
-    
-    def changePin(bank):
-        account = BankManager.promptForAccountNumberAndPIN(bank)
-        run = True
-        while run:
-            newPin = input('Enter new PIN: ')
-            if BankUtility.isNumeric(newPin) and len(newPin) == 4:
-                confirm = input("Enter new PIN again to confirm:\n")
-                if newPin == confirm:
-                    account.setPin(newPin)
-                    print('PIN updated')
-                    run = False
-                    break
+        try:
+            if account is not None:
+                pin = input("Enter PIN number:\n")
+                if account.isValidPIN(pin):
+                    return account   
             else:
-                input("Please enter a valid PIN \nPress Enter to Continue.")
+                print("Please enter a valid PIN.")
+                return False      
+        except:       
+            print(f"Account not found for account number: {account_num}")
+            return False
+        
 
+    def changePin(bank):
+        '''This function takes in a bank object, and prompts the user
+        for a new PIN so that they may change their PIN.'''
+        account = BankManager.promptForAccountNumberAndPIN(bank)
+        if account is not False:
+            run = True
+            while run:
+                newPin = input("Enter new PIN: ")
+                if BankUtility.isNumeric(newPin) and len(newPin) == 4:
+                    confirm = input("Enter new PIN again to confirm:\n")
+                    if newPin == confirm:
+                        account.setPin(newPin)
+                        print("PIN updated")
+                        run = False
+                        break
+                else:
+                    input("Please enter a valid PIN \nPress Enter to Continue.")
+
+    def depositMoney(bank):
+        '''This function takes in a bank object, prompts the user for a deposit in 
+        dollars and cents so that they may make a deposit on their account.'''
+        account = BankManager.promptForAccountNumberAndPIN(bank)
+        if account is not False:
+            run = True
+            while run:
+                deposit = input("Enter amount to deposit in dollars and cents (e.g. 2.57):\n")
+                try:
+                    if float(deposit) <= 0:
+                        print("Amount cannot be negative. Try again")
+                    else:
+                        deposit = float(deposit)
+                        account.deposit(deposit)
+                        print(f"New balance:${account.getBal()}")
+                        BankManager.cont()
+                        run = False
+                        break
+                except:
+                    print("Error")
+
+    def transferMoney(bank):
+        '''This function'''
+        account1 = BankManager.promptForAccountNumberAndPIN(bank)
+        if account1 is not False:            
+            account2 = BankManager.promptForAccountNumberAndPIN(bank)
+            if account2 is not False:
+                run = True
+                while run:
+                    transfer = input("Enter amount to transfer in dollars and cents (e.g. 2.57):\n")
+                    transfer = float(transfer)
+                    try:
+                        if transfer <= 0:
+                            print("Amount cannot be negative. Try again")
+                        else:
+                            account1.withdraw(transfer)
+                            account2.deposit(transfer)
+                            print(f'''Transfer Complete
+New balance in account:{account1.getAccountNumber()} is:${account1.getBal()}
+New balance in account:{account2.getAccountNumber()} is:${account2.getBal()}''')
+                            BankManager.cont()
+                            run = False
+                            break
+                    except:     
+                        print("Error")
+
+    def withdrawMoney():
+        pass
+    
+    def atmWithdraw():
+        pass
+
+    def depositChange():
+        pass
+
+    def closeAccount():
+        pass
+    
+    def monthlyInterest():
+        pass
