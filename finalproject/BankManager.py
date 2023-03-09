@@ -1,7 +1,7 @@
 from Bank import *
 from BankUtility import *
 from Account import *
-
+from CoinCollector import *
 
 
 def options():
@@ -225,7 +225,8 @@ New balance: ${account.getBal()} ''')
     def depositChange(bank):
         account = BankManager.promptForAccountNumberAndPIN(bank)
         if account is not False:
-            pass
+            change = input("Deposit coins: \n")
+            print(CoinCollector.parseChange(change))
 
     def closeAccount(bank):
         account = BankManager.promptForAccountNumberAndPIN(bank)

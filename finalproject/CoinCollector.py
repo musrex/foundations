@@ -13,17 +13,17 @@ class CoinCollector:
         }
 
         for x in coins:
-            if x == purse["P"]:
+            if x == "P":
                 purse["P"] = purse["P"] + 1
-            if x == purse["N"]:
+            if x == "N":
                 purse["N"] = purse["N"] + 1
-            if x == purse["P"]:
+            if x == "D":
                 purse["D"] = purse["D"] + 1
-            if x == purse["Q"]:
+            if x == "Q":
                 purse["Q"] = purse["Q"] + 1
-            if x == purse["H"]:
+            if x == "H":
                 purse["H"] = purse["H"] + 1
-            if x == purse["W"]:
+            if x == "W":
                 purse["W"] = purse["W"] + 1            
 
-        return 0
+        return purse
