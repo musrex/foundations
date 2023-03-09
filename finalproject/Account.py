@@ -54,14 +54,15 @@ class Account:
             self.bal = self.bal + amount
         else:
             self.bal = self.bal + amount
+
     def withdraw(self, amount):
         if self.bal == "$0.00":            
             self.bal = 0
-            return "Insufficient funds"
+            return False
         elif self.bal > amount:
                 self.bal = self.bal - amount
         else: 
-            return "Insufficient funds"
+            return False
 
     def setPin(self, pin_num):
         self.pin = pin_num
@@ -79,7 +80,7 @@ class Account:
     
     def getAccountNumber(self):
         return self.accountNum
-    
+
     def display(self):
         print(f'''============================================================
 Account Number: {self.accountNum}

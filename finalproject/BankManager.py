@@ -11,7 +11,7 @@ def options():
     Parameters:
     selection(str): Selection should be input entered via input() function.
 
-    Returns: INT in range 1-4, corresponding with the 4 menu items
+    Returns: INT in range 1-11, corresponding with the 11 menu items
     '''
     try:
         selection = input("Enter #: ")
@@ -19,7 +19,7 @@ def options():
         if selection in range(1,11):
             return selection
     except:
-        input('ERROR: Please enter a number in the range of 1-4. \nPress Enter to Continue.')
+        input('ERROR: Please enter a number in the range of 1-11. \nPress Enter to Continue.')
 
 
 class BankManager:
@@ -45,14 +45,13 @@ What do you want to do?
             selection = options()
             try:
             
-                # For ending program 32191678 13123
+                # For ending program
                 if selection == 11:
                     run = False
                     break
                 # For adding an account
                 elif selection == 1:
                     bank.openAccount()
-                 #0096    #1130
                 # For displaying the account information    
                 elif selection == 2:
                     account = BankManager.promptForAccountNumberAndPIN(bank)
@@ -102,6 +101,7 @@ What do you want to do?
                 return False      
         except:       
             print(f"Account not found for account number: {account_num}")
+            BankManager.cont()
             return False
         
 
@@ -145,7 +145,8 @@ What do you want to do?
                     print("Error")
 
     def transferMoney(bank):
-        '''This function'''
+        '''This function takes in a bank object, and then prompts the user for the
+        information for two '''
         account1 = BankManager.promptForAccountNumberAndPIN(bank)
         if account1 is not False:            
             account2 = BankManager.promptForAccountNumberAndPIN(bank)
@@ -169,17 +170,68 @@ New balance in account:{account2.getAccountNumber()} is:${account2.getBal()}''')
                     except:     
                         print("Error")
 
-    def withdrawMoney():
-        pass
+    def withdrawMoney(bank):
+        '''This function takes in a bank object, prompts the user for a withdrawal in 
+        dollars and cents so that they may make a deposit on their account.'''
+        account = BankManager.promptForAccountNumberAndPIN(bank)
+        if account is not False:
+            run = True
+            while run:
+                withdraw = input("Enter amount to withdraw in dollars and cents (e.g. 2.57):\n")
+                withdraw = float(withdraw)
+                try:
+                    if withdraw <= 0:
+                        print("Amount cannot be negative. Try again")
+                    else:
+                        account.withdraw(withdraw)
+                        print(f"New balance:${account.getBal()}")
+                        BankManager.cont()
+                        run = False
+                        break
+                except:
+                    print("Error")
     
-    def atmWithdraw():
-        pass
+    def atmWithdraw(bank):
+        account = BankManager.promptForAccountNumberAndPIN(bank)
+        if account is not False:
+            run = True
+            while run:
+                withdraw = input("Enter amount to withdraw in dollars (no cents) in multiples of $5 (limit $1000):\n")
+                withdraw = float(withdraw)
+                try:
+                    if withdraw > 1000 or withdraw < 5 or withdraw % 5 != 0:
+                        print("Invalid amount. Try again.")
+                        BankManager.cont()
+                    else:    
+                        if account.withdraw(withdraw) is not False:
+                            twenties = withdraw // 20
+                            tens = (withdraw - (20 * twenties) ) // 10
+                            fives = (withdraw - ((20 * twenties)+(10 * tens)) ) // 5
+                            print(f'''Number of 20-dollar bills:{int(twenties)}
+Number of 10-dollar bills:{int(tens)}
+Number of 5-dollar bills:{int(fives)}
+New balance: ${account.getBal()} ''')
+                            BankManager.cont()
+                            run = False
+                            break
+                        else:
+                            print("Insufficient funds")
+                            run = False
+                            break    
+                except:
+                    print("Error")        
+        
 
-    def depositChange():
-        pass
+    def depositChange(bank):
+        account = BankManager.promptForAccountNumberAndPIN(bank)
+        if account is not False:
+            pass
 
-    def closeAccount():
-        pass
+    def closeAccount(bank):
+        account = BankManager.promptForAccountNumberAndPIN(bank)
+        if account is not False:
+            print(f"Account {account.getAccountNumber()} closed")
+            pass
     
-    def monthlyInterest():
+    def monthlyInterest(bank):
         pass

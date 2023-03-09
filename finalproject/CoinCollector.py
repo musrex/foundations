@@ -15,11 +15,15 @@ class CoinCollector:
         for x in coins:
             if x == purse["P"]:
                 purse["P"] = purse["P"] + 1
-        # implement parseChange here
-        #◦ ‘P’ represents a penny (1 cent)
-        #◦ ‘N’ represents a nickel (5 cents)
-        #◦ ‘D’ represents a dime (10 cents)
-        #◦ ‘Q’ represents a quarter (25 cents)
-        #◦ ‘H’ represents a half-dollar (50 cents)
-        #◦ ‘W’ represents a whole dollar (100 cents)
+            if x == purse["N"]:
+                purse["N"] = purse["N"] + 1
+            if x == purse["P"]:
+                purse["D"] = purse["D"] + 1
+            if x == purse["Q"]:
+                purse["Q"] = purse["Q"] + 1
+            if x == purse["H"]:
+                purse["H"] = purse["H"] + 1
+            if x == purse["W"]:
+                purse["W"] = purse["W"] + 1            
+
         return 0

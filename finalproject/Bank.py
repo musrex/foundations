@@ -17,11 +17,10 @@ class Bank:
             return True, self.accounts.append(newAccount)
             
 
-    def removeAccountFromBank(account):
-        pass
-            # implement removeAccountFromBank here
+    def removeAccountFromBank(self, account_num):
+        account = self.findAccount(account_num)
+        self.accounts.remove(account)
 
-        #return False; # be sure to change this as needed
   
     def findAccount(self, account_num):
         '''This function finds the matching account in the 
