@@ -4,7 +4,7 @@ from Bank import *
 class Bank:
     def __init__(self) -> None:
         self.accounts = []
-        self.accountsLimit = 2
+        self.accountsLimit = 3
     
 
     def addAccountToBank(self,newAccount):
