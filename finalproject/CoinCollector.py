@@ -34,5 +34,5 @@ class CoinCollector:
         quarters = purse["Q"] * .25
         half = purse["H"] * .50
         dollar = purse["W"] * 1.00
-        bal = pennies + nickels + dimes + quarters + half + dollar
+        bal = round(pennies + nickels + dimes + quarters + half + dollar, 2)
         return bal

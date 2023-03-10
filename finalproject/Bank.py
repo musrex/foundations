@@ -8,7 +8,7 @@ class Bank:
     
 
     def addAccountToBank(self,newAccount):
-        '''This function takes in a new account as a parameter
+        '''This method takes in a new account as a parameter
         and appends it to our list of bank accounts'''
         if len(self.accounts) >= self.accountsLimit:
             print("No more accounts available")
@@ -18,24 +18,37 @@ class Bank:
             
 
     def removeAccountFromBank(self, account_num):
+        '''This method takes an account number as a parameter
+        and removes it from the list of bank accounts.'''
         account = self.findAccount(account_num)
         self.accounts.remove(account)
 
   
     def findAccount(self, account_num):
-        '''This function finds the matching account in the 
+        '''This method finds the matching account in the 
         bank account list and returns it'''
         for account in self.accounts:
             if account.getAccountNumber() == account_num:
                 return account
         return "Searched element not in the list"
 
-    def addMonthlyInterest(percent):
-        pass
+    def addMonthlyInterest(self, percent):
+        '''This method takes in a parameter, yearly interest rate
+        and applies it monthly.'''
+        try:
+            percent = float(percent) / 12
+            for account in bank.accounts:
+                bal = account.getBal() * percent
+                bal = round(float(bal), 2)
+                account.deposit(bal)
+                print(f"Deposited interest:${bal} into account number:{account.getAccountNumber()}, new balance:${account.getBal()}")
+        except:
+            print("Error")
         # EXTRA CREDIT
 
 
     def openAccount(self):
+        '''This method opens an account '''
         print("OPEN ACCOUNT")
         newAccount = Account()
         fName = input("Enter Account Owner's First Name:\n")

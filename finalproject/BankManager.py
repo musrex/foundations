@@ -230,23 +230,16 @@ New balance: ${account.getBal()} ''')
             account.deposit(bal)
             print(f"${bal} in coins deposited into account.")
             print(f"New balance: ${account.getBal()}")
-            BankManager.con()
+            BankManager.cont()
 
     def closeAccount(bank):
         account = BankManager.promptForAccountNumberAndPIN(bank)
         if account is not False:
             bank.removeAccountFromBank(account)
             print(f"Account {account.getAccountNumber()} closed")
-            BankManager.con()
+            BankManager.cont()
     
     def monthlyInterest(bank):
         interest = input("Enter annual interest rate percentage (e.g. 2.75 for 2.75%): \n")
-        try:
-            interest = float(interest) / 12
-            for account in bank.accounts:
-                bal = account.getBal() * interest
-                bal = round(float(bal), 2)
-                account.deposit(bal)
-                print(f"Deposited interest:${bal} into account number:{account.getAccountNumber()}, new balance:${account.getBal()}")
-        except:
-            print("Error")
+        addMonthlyInterest(interest)
+        BankManager.cont()
