@@ -241,13 +241,12 @@ New balance: ${account.getBal()} ''')
     
     def monthlyInterest(bank):
         interest = input("Enter annual interest rate percentage (e.g. 2.75 for 2.75%): \n")
-        #try:
-        interest = float(interest) / 12
-        for account in bank.accounts:
-            bal = account.getBal() * interest
-            bal = bal[:2]
-            bal = float(bal)
-            account.deposit(bal)
-            print(f"Deposited interest:${bal} into account number:{account.getAccountNumber()}, new balance:${account.getBal()}")
-        #except:
-        #    print("Error")
+        try:
+            interest = float(interest) / 12
+            for account in bank.accounts:
+                bal = account.getBal() * interest
+                bal = round(float(bal), 2)
+                account.deposit(bal)
+                print(f"Deposited interest:${bal} into account number:{account.getAccountNumber()}, new balance:${account.getBal()}")
+        except:
+            print("Error")
