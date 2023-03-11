@@ -183,11 +183,16 @@ New balance in account:{account2.getAccountNumber()} is:${account2.getBal()}''')
                     if withdraw <= 0:
                         print("Amount cannot be negative. Try again")
                     else:
-                        account.withdraw(withdraw)
-                        print(f"New balance:${account.getBal()}")
-                        BankManager.cont()
-                        run = False
-                        break
+                        if not account.withdraw(withdraw):
+                            print(f"Insufficient funds in account {account.getAccountNumber()}")
+                            BankManager.cont()
+                            run = False
+                            break
+                        else:
+                            print(f"New balance:${account.getBal()}")
+                            BankManager.cont()
+                            run = False
+                            break
                 except:
                     print("Error")
     

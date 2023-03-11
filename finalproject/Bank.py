@@ -1,5 +1,6 @@
 from Account import *
 from Bank import *
+from BankUtility import *
 
 class Bank:
     def __init__(self) -> None:
@@ -37,7 +38,7 @@ class Bank:
         and applies it monthly.'''
         try:
             percent = float(percent) / 12
-            for account in bank.accounts:
+            for account in self.accounts:
                 bal = account.getBal() * percent
                 bal = round(float(bal), 2)
                 account.deposit(bal)
@@ -53,7 +54,17 @@ class Bank:
         newAccount = Account()
         fName = input("Enter Account Owner's First Name:\n")
         lName = input("Enter Account Owner's Last Name:\n")
-        ssn_input = input("Enter Account Owner's SSN (9 digits):")
+        ssn = False
+        while not ssn:
+            ssn_input = input("Enter Account Owner's SSN (9 digits):")
+            if len(ssn_input) == 9:
+                if BankUtility.isNumeric(ssn_input):
+                    ssn = True
+                    break
+                else:
+                    print("Social Security Number must be 9 digits")
+            else:
+                print("Social Security Number must be 9 digits")
         newAccount.setFirstName(fName)
         newAccount.setLastName(lName)
         newAccount.setSSN(ssn_input)

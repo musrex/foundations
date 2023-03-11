@@ -23,7 +23,11 @@ class Account:
         b = str(BankUtility.generateRandomInteger(0, 9))
         c = str(BankUtility.generateRandomInteger(0, 9))
         d = str(BankUtility.generateRandomInteger(0, 9))
-        self.accountNum = a+b+c+d
+        e = str(BankUtility.generateRandomInteger(0, 9))
+        f = str(BankUtility.generateRandomInteger(0, 9))
+        g = str(BankUtility.generateRandomInteger(0, 9))
+        h = str(BankUtility.generateRandomInteger(0, 9))
+        self.accountNum = a+b+c+d+e+f+g+h
     
 
     # getters for first and last name
@@ -42,7 +46,7 @@ class Account:
     def setSSN(self,ssn_input):
         self.ssn = ssn_input
     def getSSN(self):
-        return "XXX-XX-" + self.ssn[6:]
+        return "XXX-XX-" + self.ssn[5:]
 
     def getBal(self):
         return self.bal
@@ -86,7 +90,7 @@ class Account:
 Account Number: {self.accountNum}
 Owner First Name: {self.firstName}
 Owner Last Name: {self.lastName}
-Owner SSN: {self.ssn}
+Owner SSN: {self.getSSN()}
 PIN: {self.pin}
 Balance: {self.bal}
 ============================================================''')
@@ -103,7 +107,7 @@ Balance: {self.bal}
 Account Number: {self.accountNum}
 Owner First Name: {self.firstName}
 Owner Last Name: {self.lastName}
-Owner SSN: {self.ssn}
+Owner SSN: XXX-X{self.ssn[4:0]}
 PIN: {self.pin}
 Balance: {self.bal}
 ============================================================'''
