@@ -44,16 +44,26 @@ class Bank:
                 account.deposit(bal)
                 print(f"Deposited interest:${bal} into account number:{account.getAccountNumber()}, new balance:${account.getBal()}")
         except:
-            print("Error")
-        # EXTRA CREDIT
+            print("Invalid entry.")
+        
 
 
     def openAccount(self):
-        '''This method opens an account '''
+        '''This method opens an account'''
         print("OPEN ACCOUNT")
         newAccount = Account()
-        fName = input("Enter Account Owner's First Name:\n")
-        lName = input("Enter Account Owner's Last Name:\n")
+        first = False
+        while not first: 
+            fName = input("Enter Account Owner's First Name:\n")
+            if len(fName) != 0:
+                first = True
+                break
+        second = False
+        while not second: 
+            lName = input("Enter Account Owner's Last Name:\n")
+            if len(lName) != 0:
+                second = True
+                break
         ssn = False
         while not ssn:
             ssn_input = input("Enter Account Owner's SSN (9 digits):")

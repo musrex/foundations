@@ -99,7 +99,7 @@ Balance: {self.bal}
     def isValidPIN(self, entered_pin):
         if int(entered_pin) == int(self.pin):
                 return True
-        return False, "Invalid PIN"
+        return False
     
     
     def toString(self):
@@ -107,7 +107,7 @@ Balance: {self.bal}
 Account Number: {self.accountNum}
 Owner First Name: {self.firstName}
 Owner Last Name: {self.lastName}
-Owner SSN: XXX-X{self.ssn[4:0]}
+Owner SSN: {self.getSSN()}
 PIN: {self.pin}
 Balance: {self.bal}
 ============================================================'''
