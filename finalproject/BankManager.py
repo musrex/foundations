@@ -16,7 +16,7 @@ def options():
     try:
         selection = input("Enter #: ")
         selection = int(selection)
-        if selection in range(1,11):
+        if selection in range(1,12):
             return selection
     except:
         input('ERROR: Please enter a number in the range of 1-11. \nPress Enter to Continue.')
@@ -55,31 +55,39 @@ What do you want to do?
                 # For displaying the account information    
                 elif selection == 2:
                     BankManager.getAccountInfo(bank)
+                # For changing the PIN
                 elif selection == 3:
                     BankManager.changePin(bank)
+                # For depositing money in an account
                 elif selection == 4:
                     BankManager.depositMoney(bank)
+                # Fro transfering money from one account to another
                 elif selection == 5:
                     BankManager.transferMoney(bank)
+                # For withdrawing money from an account
                 elif selection == 6:
                     BankManager.withdrawMoney(bank)
+                # For withdrawing cash, in assorted bills, from an account
                 elif selection == 7:
                     BankManager.atmWithdraw(bank)
+                # For depositing change into an account
                 elif selection == 8:
                     BankManager.depositChange(bank)
+                # For closing a bank account
                 elif selection == 9:
                     BankManager.closeAccount(bank)
+                # For adding monthly interest to all accounts    
                 elif selection == 10:
                     BankManager.monthlyInterest(bank)
             except TypeError: "Please enter a number"
 
-        
-        # This is where you will implement your ‘main’ method and start
-        # the program from.  The BankManager class should create an instance
-        # of a Bank object when the program runs and use that instance to
-        # manage the Accounts in the bank
 
     def cont():
+        '''This function takes in no parameters and simply
+        returns an input field asking the user to press Enter.
+        This function is meant to slow the print statements so
+        a user has time to process the information on the screen
+        before going back to the menu'''
         input('Press Enter to continue.\n')
 
     @staticmethod    
@@ -104,6 +112,9 @@ What do you want to do?
                 return False
         
     def getAccountInfo(bank):
+        '''This function takes in a bank object, and 
+        prompts the user for an account number an pin,
+        returning the appropriate bank account information'''
         account = BankManager.promptForAccountNumberAndPIN(bank)
         if account:
             print(account.toString())
@@ -155,7 +166,8 @@ What do you want to do?
 
     def transferMoney(bank):
         '''This function takes in a bank object, and then prompts the user for the
-        information for two '''
+        information for two different accounts, as well as a sum so that the user
+        may transfer funds from one account to the other.'''
         account1 = BankManager.promptForAccountNumberAndPIN(bank)
         if account1 is not False:            
             account2 = BankManager.promptForAccountNumberAndPIN(bank)
@@ -168,14 +180,18 @@ What do you want to do?
                         if transfer <= 0:
                             print("Amount cannot be negative. Try again")
                         else:
-                            account1.withdraw(transfer)
-                            account2.deposit(transfer)
-                            print(f'''Transfer Complete
+                            if account1.withdraw(transfer):
+                                account2.deposit(transfer)
+                                print(f'''Transfer Complete
 New balance in account:{account1.getAccountNumber()} is:${account1.getBal()}
 New balance in account:{account2.getAccountNumber()} is:${account2.getBal()}''')
-                            BankManager.cont()
-                            run = False
-                            break
+                                BankManager.cont()
+                                run = False
+                                break
+                            else:
+                                print("Insufficient funds")
+                                run = False
+                                break
                     except:     
                         print("Error")
 
@@ -206,6 +222,8 @@ New balance in account:{account2.getAccountNumber()} is:${account2.getBal()}''')
                     print("Error")
     
     def atmWithdraw(bank):
+        '''This function takes in a bank object as a parameter and allows our user to 
+        withdraw cash in the form of bills - 20s, 10s, and 5s.'''
         account = BankManager.promptForAccountNumberAndPIN(bank)
         if account is not False:
             run = True
@@ -224,7 +242,7 @@ New balance in account:{account2.getAccountNumber()} is:${account2.getBal()}''')
                             print(f'''Number of 20-dollar bills:{int(twenties)}
 Number of 10-dollar bills:{int(tens)}
 Number of 5-dollar bills:{int(fives)}
-New balance: ${account.getBal()} ''')
+New balance: ${round(account.getBal(),2)} ''')
                             BankManager.cont()
                             run = False
                             break
@@ -234,9 +252,11 @@ New balance: ${account.getBal()} ''')
                             break    
                 except:
                     print("Error")        
-        
 
     def depositChange(bank):
+        '''This function uses the parseChange method from the CoinCollecter class
+        to take in strings that coincide with coins, adding the appropriate balance
+        to an account.'''
         account = BankManager.promptForAccountNumberAndPIN(bank)
         if account is not False:
             change = input("Deposit coins: \n")
@@ -247,6 +267,9 @@ New balance: ${account.getBal()} ''')
             BankManager.cont()
 
     def closeAccount(bank):
+        '''This function takes in a bank object as a paramter, and then prompts the user
+        for an account number and pin. If found, the function removes that account from
+        the list, closing it.'''
         account = BankManager.promptForAccountNumberAndPIN(bank)
         if account is not False:
             bank.removeAccountFromBank(account)
@@ -254,6 +277,9 @@ New balance: ${account.getBal()} ''')
             BankManager.cont()
     
     def monthlyInterest(bank):
+        '''This function prompts the user for input and then uses the
+        addMonthlyInterest method to add interest to all accounts
+        in the list of accounts'''
         interest = input("Enter annual interest rate percentage (e.g. 2.75 for 2.75%): \n")
         bank.addMonthlyInterest(interest)
         BankManager.cont()

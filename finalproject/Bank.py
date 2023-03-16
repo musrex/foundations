@@ -5,7 +5,7 @@ from BankUtility import *
 class Bank:
     def __init__(self) -> None:
         self.accounts = []
-        self.accountsLimit = 3
+        self.accountsLimit = 100
     
 
     def addAccountToBank(self,newAccount):
@@ -13,7 +13,7 @@ class Bank:
         and appends it to our list of bank accounts'''
         if len(self.accounts) >= self.accountsLimit:
             print("No more accounts available")
-            return False # be sure to change this as needed
+            return False
         else:
             return True, self.accounts.append(newAccount)
             
@@ -22,8 +22,11 @@ class Bank:
         '''This method takes an account number as a parameter
         and removes it from the list of bank accounts.'''
         account = self.findAccount(account_num)
-        self.accounts.remove(account)
-
+        if account:
+            self.accounts.remove(account_num)
+            return True
+        else:
+            return False
   
     def findAccount(self, account_num):
         '''This method finds the matching account in the 
@@ -40,16 +43,19 @@ class Bank:
             percent = float(percent) / 12
             for account in self.accounts:
                 bal = account.getBal() * percent
-                bal = round(float(bal), 2)
+                bal = float(bal)
+                bal = round(bal, 2)
                 account.deposit(bal)
-                print(f"Deposited interest:${bal} into account number:{account.getAccountNumber()}, new balance:${account.getBal()}")
+                print(f"Deposited interest:${bal} into account number:{account.getAccountNumber()}, new balance:${round(account.getBal(),2)}")
         except:
             print("Invalid entry.")
         
 
 
     def openAccount(self):
-        '''This method opens an account'''
+        '''This method opens an account. It prompts the user for the necessary information,
+        generates other necessary information, and then adds the account to the list of bank
+        accounts.'''
         print("OPEN ACCOUNT")
         newAccount = Account()
         first = False

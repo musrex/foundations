@@ -3,6 +3,8 @@ class CoinCollector:
 
     
     def parseChange(coins):
+        '''This method parses strings, and if the string resembles the corresponding coin,
+        adds that value to the account balance.'''
         purse = {
         "P":0,
         "N":0,

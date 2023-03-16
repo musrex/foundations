@@ -10,7 +10,6 @@ class BankUtility:
         
     def promptUserForString(prompt):
         '''This function prompts the user for a string'''
-        # implement promptUserForString here
         try:
             answer = input(prompt)
             return answer
@@ -23,9 +22,6 @@ class BankUtility:
             return int((float(input(prompt))) * 10)  
         except ValueError:
             return "Amount cannot be negative.  Try again"
-        # implement promptUserForPositiveNumber here
-        
-        return 0.0 # be sure to change this
     
     def generateRandomInteger(min, max):
         '''This function takes two parameters, a MIN value and MAX value
@@ -33,7 +29,7 @@ class BankUtility:
         return random.randint(min, max)
     
     def convertFromDollarsToCents(amount):    
-        return int(amount * 100)
+        return int(float(amount * 100))
     
     '''
       Checks if a given string is a number (long)
