@@ -15,5 +15,3 @@ Projects:
 -  Project 6 - Building a deque
 -  Project 7 - Sorting Algorithm Comparison
 -  Final - ATM/Banking App
-
-
